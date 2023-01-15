@@ -73,11 +73,7 @@ func (state *MenuState) DoAction(g *utils.Game) {
 			break
 		}
 
-		state := &world.WorldState{
-			MainHero:      world.GetNewPlayer(),
-			OnlinePlayers: []world.OnlinePlayer{},
-			Con:           ws,
-		}
+		state := world.GenerateWorldState(ws)
 		g.State = state
 		go state.HandleNetwork(g)
 	}
